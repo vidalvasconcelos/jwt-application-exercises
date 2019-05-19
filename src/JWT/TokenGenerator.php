@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\JWT;
 
-use App\Auth\User;
+use App\Auth\UserInterface;
 
-final class GenerateToken
+final class TokenGenerator
 {
-    public static function generate(GenerateSignatureInterface $generator, User $user)
+    public static function generate(SignatureGeneratorInterface $generator, UserInterface $user): string
     {
         $header = base64_encode(json_encode([
             'typ' => 'JWT',
@@ -23,8 +23,6 @@ final class GenerateToken
 
         $signature = $generator->generate($header, $payload);
 
-        echo json_encode([
-            'token' => sprintf("%s.%s.%s", $header, $payload, $signature)
-        ]);
+        return sprintf("%s.%s.%s", $header, $payload, $signature);
     }
 }

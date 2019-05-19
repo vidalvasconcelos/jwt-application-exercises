@@ -4,24 +4,27 @@ declare(strict_types=1);
 
 namespace App\Auth;
 
-use App\JWT\GenerateSignature;
-use App\JWT\GenerateToken;
-use App\Support\AuthRequest;
+use App\JWT\SignatureSha256Generator;
+use App\JWT\TokenGenerator;
 
 final class AuthenticateUser
 {
-    public function __construct(AuthRequest $auth)
+    /**
+     * @param \App\Auth\AuthRequestInterface $auth
+     * @throws \Exception
+     * @return string
+     */
+    public function __invoke(AuthRequestInterface $auth): string
     {
         if (! User::checkCredentials($auth->getEmail(), $auth->getPassword())) {
-            echo json_encode([
-                'authorization' => 'failed'
-            ]);
-            return;
+            throw new \Exception("Credential invalid");
         }
 
-        GenerateToken::generate(
-            new GenerateSignature(),
+        $token = TokenGenerator::generate(
+            new SignatureSha256Generator(),
             new User()
         );
+
+        return json_encode(compact('token'));
     }
 }

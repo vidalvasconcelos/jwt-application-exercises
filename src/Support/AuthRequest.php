@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Support;
 
-final class AuthRequest
+use App\Auth\AuthRequestInterface;
+
+final class AuthRequest implements AuthRequestInterface
 {
     private $attr;
 

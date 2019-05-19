@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\JWT;
 
-interface GenerateSignatureInterface
+interface SignatureGeneratorInterface
 {
     public const KEY = 'rapadura';
 

@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "c0169c58-bed0-4650-8bdf-03e6db63c3c9",
+		"name": "rapadura-jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwaHBjb21yYXBhZHVyYS5vcmciLCJlbWFpbCI6InZhc2NvbmNlbG9zdmlkYWxAZ21haWwuY29tIiwiYWRtaW4iOnRydWV9.6YFNMbiz+koSbYqUQYET5H184UvG+fnpm7M2fvP4DuY=",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "XDEBUG_SESSION_START",
+						"value": "PHPSTORM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "products",
+							"type": "file",
+							"src": "",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "XDEBUG_SESSION_START",
+						"value": "PHPSTORM",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "vasconcelosvidal@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "rapadurainrussas",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
