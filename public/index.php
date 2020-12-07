@@ -20,23 +20,17 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 );
 
 $response = (static function (RequestInterface $request): ResponseInterface {
-    try {
-        $path = $request->getUri()->getPath();
-
-        if ('/auth' === $path) {
-            return (new Authenticate)($request);
-        }
-
-        if ('/admin' === $path) {
+    switch ($request->getUri()->getPath()) {
+        case '/auth':
+            return (new Authenticate())($request);
+        case '/admin':
             return (new DisplayOrderList())($request);
-        }
-
-        return (new Welcome())($request);
-
-    } catch (Exception $e) {
-        return new JsonResponse(['error' => $e->getMessage()]);
+        case '/':
+            return (new Welcome())($request);
+        default:
+            return new JsonResponse(['message' => 'page not found'], 404);
     }
-})($request);
+    })($request);
 
 echo $response->getBody()->getContents();
 

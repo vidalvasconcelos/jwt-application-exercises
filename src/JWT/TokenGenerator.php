@@ -16,7 +16,7 @@ final class TokenGenerator
         ]));
 
         $payload = base64_encode(json_encode([
-            'iss' => 'php-com-rapadura.org',
+            'iss' => 'phpcomrapadura.org',
             'email' => $user->toEmail(),
             'admin' => $user->toAdmin()
         ]));
