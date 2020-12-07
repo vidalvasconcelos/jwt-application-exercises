@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Auth;
+namespace App;
 
-final class User implements UserInterface
+final class NaiveUser implements User
 {
     public function toEmail(): string
     {
@@ -18,6 +18,7 @@ final class User implements UserInterface
 
     public static function checkCredentials(string $email, string $password): bool
     {
-        return $email === self::EMAIL && $password === self::PASSWORD;
+        return $email === self::EMAIL
+            && $password === self::PASSWORD;
     }
 }

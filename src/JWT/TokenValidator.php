@@ -6,11 +6,6 @@ namespace App\JWT;
 
 final class TokenValidator
 {
-    /**
-     * @param \App\JWT\SignatureGeneratorInterface $generator
-     * @param string                               $token
-     * @return bool
-     */
     public static function validate(SignatureGeneratorInterface $generator, string $token): bool
     {
         $anatomy = explode(".", $token);

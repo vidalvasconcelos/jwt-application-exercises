@@ -13,6 +13,8 @@
     },
     "require": {
         "ext-json": "*",
-        "php": ">=7.2.0"
+        "php": ">=7.3.0",
+        "league/pipeline": "^1.0",
+        "laminas/laminas-diactoros": "^2.5"
     }
 }
